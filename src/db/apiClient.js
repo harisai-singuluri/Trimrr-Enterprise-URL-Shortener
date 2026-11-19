@@ -33,6 +33,12 @@ export async function apiClient(endpoint, options = {}) {
   });
 
   if (!response.ok) {
+    // If token is invalid or user was removed after restart, clear stale credentials
+    if (response.status === 401 && !endpoint.includes("/auth/login")) {
+      localStorage.removeItem("token");
+      localStorage.removeItem("user");
+    }
+
     let errorMessage = "An error occurred";
     try {
       const errorData = await response.json();

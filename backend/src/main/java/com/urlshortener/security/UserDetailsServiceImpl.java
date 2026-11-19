@@ -24,8 +24,11 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     }
 
     public UserDetails loadUserById(Long id) {
-        User user = userRepository.findById(id)
-                .orElseThrow(() -> new UsernameNotFoundException("User not found with id: " + id));
-        return new CustomUserDetails(user);
+        if (id == null) {
+            return null;
+        }
+        return userRepository.findById(id)
+                .map(CustomUserDetails::new)
+                .orElse(null);
     }
 }
