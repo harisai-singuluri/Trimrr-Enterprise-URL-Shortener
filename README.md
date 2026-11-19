@@ -200,4 +200,4 @@ When interviewers ask about this project, here is how you can explain it in simp
 **Singuluri Hari Sai**
 - **Live Application**: [https://trimrr-urlshortner.vercel.app/](https://trimrr-urlshortner.vercel.app/)
 - **Backend API**: [https://url-shortner-1-2xvr.onrender.com](https://url-shortner-1-2xvr.onrender.com)
-- **GitHub Repository**: [https://github.com/harisai-singuluri/URL-SHORTNER](https://github.com/harisai-singuluri/URL-SHORTNER)
+- **GitHub Repository**: [https://github.com/harisai-singuluri/Trimrr-Enterprise-URL-Shortener](https://github.com/harisai-singuluri/Trimrr-Enterprise-URL-Shortener)
