@@ -25,7 +25,22 @@ export default defineConfig({
     },
   },
   build: {
-    chunkSizeWarningLimit: 1200,
+    chunkSizeWarningLimit: 1500,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          "react-vendor": ["react", "react-dom", "react-router-dom"],
+          "charts-vendor": ["recharts"],
+          "ui-vendor": [
+            "lucide-react",
+            "clsx",
+            "tailwind-merge",
+            "class-variance-authority",
+            "yup"
+          ],
+        },
+      },
+    },
   },
   rules: {
     "react/prop-types": 0,
