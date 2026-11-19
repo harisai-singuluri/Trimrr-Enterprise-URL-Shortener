@@ -1,0 +1,18 @@
+# Build Stage
+FROM maven:3.9.6-eclipse-temurin-21 AS build
+WORKDIR /app
+COPY pom.xml .
+RUN mvn dependency:go-offline -B || true
+COPY src ./src
+RUN mvn clean package -DskipTests
+
+# Run Stage
+FROM eclipse-temurin:21-jre-jammy
+WORKDIR /app
+COPY --from=build /app/target/*.jar app.jar
+
+ENV PORT=8080
+ENV JAVA_OPTS="-Djava.awt.headless=true"
+EXPOSE 8080
+
+ENTRYPOINT ["sh", "-c", "java $JAVA_OPTS -jar app.jar --server.port=${PORT}"]
